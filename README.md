@@ -1,3 +1,3 @@
-# alexandre-borghi.fr
+# aborghi.fr
 
-This is the code for my personal website at [alexandre-borghi.fr](www.alexandre-borghi.fr)
+This is the code for my personal website at [aborghi.fr](www.aborghi.fr)
