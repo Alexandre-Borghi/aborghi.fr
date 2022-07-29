@@ -1,4 +1,30 @@
+* {
+    font-family: 'Fira Sans', sans-serif;
+}
+
 body {
+    width: 95%;
     max-width: 60ch;
     margin: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#logo {
+    float: left;
+    max-width: 70px;
+    margin-right: 10px;
+}
+
+p {
+    text-align: justify;
+}
+
+strong {
+    /* Remove bold to use strong for SEO */
+    all: unset;
 }
