@@ -15,9 +15,12 @@
   <meta property="og:url" content="https://aborghi.fr/">
   <meta property="og:title" content="Alexandre Borghi — Ingénieur logiciel indépendant">
   <meta property="og:description" content="Backend et intégration de systèmes. Des logiciels simples, maintenables et faits pour durer.">
-  <!-- Ajoute une image d'aperçu quand tu en auras une :
-       <meta property="og:image" content="https://aborghi.fr/og.png"> -->
+  <meta property="og:image" content="https://aborghi.fr/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alexandre Borghi — ingénieur logiciel indépendant">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aborghi.fr/img/og.png">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230c0d0f'/><text x='16' y='23' font-family='ui-monospace,monospace' font-weight='600' font-size='17' fill='%23cda15f' text-anchor='middle'>A</text></svg>">
 
@@ -128,6 +131,18 @@
       z-index: 0;
     }
     .hero > * { position: relative; z-index: 1; }
+
+    .avatar {
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 22%;
+      border: 1px solid var(--line-2);
+      box-shadow: 0 0 0 4px rgba(205, 161, 95, 0.06), 0 10px 30px rgba(0, 0, 0, 0.45);
+      margin-bottom: 1.8rem;
+    }
 
     .hero h1 {
       font-size: clamp(2.6rem, 8vw, 4.4rem);
@@ -308,6 +323,8 @@
     <!-- ============ HERO ============ -->
     <header class="hero">
       <div class="wrap">
+        <img class="avatar" src="img/avatar-sm.jpg" width="100" height="100"
+             alt="Portrait d'Alexandre Borghi" fetchpriority="high" decoding="async">
         <p class="eyebrow">Ingénieur logiciel indépendant</p>
         <h1>Alexandre&nbsp;Borghi</h1>
         <p class="lede">Je conçois des systèmes backend <em>simples</em>, maintenables et faits pour durer.</p>
