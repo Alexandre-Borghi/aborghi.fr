@@ -10,17 +10,12 @@
 #let email = "contact@aborghi.fr"
 #let linkedin = "https://www.linkedin.com/in/alexandre-borghi/"
 
-// ---- Inline icons (inherit currentColor) --------------------
-#let icon-mail = e("svg", attrs: (
-  viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
-  "stroke-width": "1.8", "stroke-linecap": "round", "stroke-linejoin": "round",
-))[
-  #e("rect", attrs: (x: "3", y: "5", width: "18", height: "14", rx: "2"))
-  #e("path", attrs: (d: "m3 7 9 6 9-6"))
-]
-
-#let icon-linkedin = e("svg", attrs: (viewBox: "0 0 24 24", fill: "currentColor"))[
-  #e("path", attrs: (d: "M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8h4.52v14H.24V8zm7.5 0h4.33v1.92h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V22h-4.52v-6.63c0-1.58-.03-3.62-2.2-3.62-2.2 0-2.54 1.72-2.54 3.5V22H7.74V8z"))
+// ---- Icons --------------------------------------------------
+// Referenced from a single shared sprite (assets/icons.svg) so
+// the browser caches one file across every page. `currentColor`
+// still flows in, so icons take the colour of their button.
+#let icon(name, base) = e("svg", attrs: (class: "icon", "aria-hidden": "true"))[
+  #e("use", attrs: ("href": base + "assets/icons.svg#" + name))
 ]
 
 // ---- Page shell ---------------------------------------------
@@ -64,16 +59,17 @@
 ]
 
 // ---- Shared components --------------------------------------
-#let btn(label, href: "", variant: "primary", icon: none, external: false) = {
+#let btn(label, href: "", variant: "primary", glyph: none, external: false) = {
   let attrs = (class: "btn btn-" + variant, href: href)
   if external { attrs += (target: "_blank", rel: "noopener") }
-  e("a", attrs: attrs)[#icon#label]
+  e("a", attrs: attrs)[#glyph#label]
 }
 
-// The email + LinkedIn button pair, reused in hero and contact.
-#let contact-actions(email-label, linkedin-label) = e("div", attrs: (class: "actions"))[
-  #btn(email-label, href: "mailto:" + email, variant: "primary", icon: icon-mail)
-  #btn(linkedin-label, href: linkedin, variant: "ghost", icon: icon-linkedin, external: true)
+// The email + LinkedIn button pair, reused in hero, contact and CTA.
+// `base` points icons at the shared sprite from any page depth.
+#let contact-actions(email-label, linkedin-label, base: "") = e("div", attrs: (class: "actions"))[
+  #btn(email-label, href: "mailto:" + email, variant: "primary", glyph: icon("mail", base))
+  #btn(linkedin-label, href: linkedin, variant: "ghost", glyph: icon("linkedin", base), external: true)
 ]
 
 #let section-head(index, title) = e("div", attrs: (class: "section-head"))[
@@ -111,8 +107,38 @@
 
 #let standfirst(body) = e("p", attrs: (class: "standfirst"))[#body]
 
-// A block quotation. `by` adds a monospace attribution line.
-#let bquote(body, by: none) = e("blockquote")[
-  #body
-  #if by != none { e("span", attrs: (class: "attribution"))[#by] }
+// Closing call-to-action, appended to every case study.
+#let case-cta(base: "") = e("aside", attrs: (class: "cta"))[
+  #e("h2")[Un projet dans le même esprit ?]
+  #e("p")[
+    Backend, intégration de systèmes ou outil métier : si vous voulez un logiciel
+    simple, solide et fait pour durer, parlons-en. Je réponds à chaque message.
+  ]
+  #contact-actions("Me contacter", "LinkedIn", base: base)
+]
+
+// Full case-study page: shared shell + reading column + backlink
+// + the closing CTA + footer. Every case study goes through this,
+// so the call-to-action is guaranteed and consistent.
+#let case-study-page(
+  title: none,
+  description: "",
+  canonical: none,
+  og: (:),
+  body,
+) = page(
+  title: title,
+  description: description,
+  base: "../",
+  canonical: canonical,
+  og: og,
+)[
+  #e("main")[
+    #e("article", attrs: (class: "article"))[
+      #backlink("../index.html")
+      #body
+      #case-cta(base: "../")
+    ]
+  ]
+  #site-footer
 ]

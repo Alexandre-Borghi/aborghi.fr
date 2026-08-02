@@ -159,7 +159,7 @@ p { max-width: var(--measure); }
   border: 1px solid var(--line-2);
   transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.2s var(--ease), color 0.2s var(--ease);
 }
-.btn svg { width: 17px; height: 17px; display: block; }
+.btn svg, .icon { width: 17px; height: 17px; display: block; flex: none; }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary {
   background: var(--accent);
@@ -376,6 +376,34 @@ footer a:hover { color: var(--muted); }
 
 /* Closing results strip, mirrors the landing-page metrics. */
 .article .metrics { margin-top: 2.4rem; }
+
+/* Closing call-to-action at the end of each case study. */
+.cta {
+  position: relative;
+  overflow: hidden;
+  margin-top: 3.6rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.8rem, 4vw, 2.5rem);
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: -55% -10% auto auto;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(50% 50% at 72% 22%, rgba(205, 161, 95, 0.13), transparent 70%);
+  pointer-events: none;
+}
+.cta > * { position: relative; }
+.cta h2 {
+  font-size: clamp(1.28rem, 3.2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.cta p { color: var(--muted); margin: 0.75rem 0 1.6rem; max-width: 44ch; }
 
 /* ---- Responsive & motion ---- */
 @media (max-width: 560px) {

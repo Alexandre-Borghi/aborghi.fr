@@ -110,7 +110,7 @@
           #section-head("03", [Travaillons ensemble])
           #e("p")[
             Un projet backend, une intégration de systèmes ou un outil métier à
-            construire~? Écrivez-moi — je lis et je réponds à chaque message.
+            construire~? Écrivez-moi, je lis et je réponds à chaque message.
           ]
           #contact-actions("contact@aborghi.fr", "alexandre-borghi")
         ]
@@ -123,10 +123,9 @@
 
 // ---- Case study: Junior UTC ERP -----------------------------
 #document("case-studies/junior-utc-erp.html")[
-  #page(
+  #case-study-page(
     title: "Générer des documents contractuels dans un cadre légal qui change — Alexandre Borghi",
     description: "Étude de cas : un ERP interne conçu pour que les changements réglementaires ne redeviennent jamais un chantier. Relectures qualité divisées par cinq.",
-    base: "../",
     canonical: "https://aborghi.fr/case-studies/junior-utc-erp.html",
     og: (
       title: "Générer des documents contractuels dans un cadre légal qui change",
@@ -136,18 +135,13 @@
       alt: "Alexandre Borghi — ingénieur logiciel indépendant",
     ),
   )[
-    #e("main")[
-      #e("article", attrs: (class: "article"))[
-        #backlink("../index.html")
-        #include "case-studies/junior-utc-erp.typ"
-      ]
-    ]
-    #site-footer
+    #include "case-studies/junior-utc-erp.typ"
   ]
 ]
 
 // ---- Shared assets ------------------------------------------
 #asset("assets/site.css", read("assets/site.css", encoding: none))
 #asset("assets/favicon.svg", read("assets/favicon.svg", encoding: none))
+#asset("assets/icons.svg", read("assets/icons.svg", encoding: none))
 #asset("assets/avatar-sm.jpg", read("assets/avatar-sm.jpg", encoding: none))
 #asset("assets/og.png", read("assets/og.png", encoding: none))
