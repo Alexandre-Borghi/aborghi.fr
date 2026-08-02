@@ -28,13 +28,18 @@
 
       // -- Hero --
       #e("header", attrs: (class: "hero"))[
+        #e("img", attrs: (
+          class: "hero-net", src: "assets/hero-net.svg", alt: "",
+          "aria-hidden": "true", decoding: "async",
+        ))
         #e("div", attrs: (class: "wrap"))[
           #e("img", attrs: (
             class: "avatar", src: "assets/avatar-sm.jpg", width: "100", height: "100",
             alt: "Portrait d'Alexandre Borghi", fetchpriority: "high", decoding: "async",
           ))
           #e("p", attrs: (class: "eyebrow"))[Ingénieur logiciel indépendant]
-          #e("h1")[Alexandre~Borghi]
+          #e("h1", attrs: (class: "name"))[Alexandre#e("span")[Borghi]]
+          #e("div", attrs: (class: "namebar"))
           #e("p", attrs: (class: "lede"))[Je conçois des systèmes backend _simples_, maintenables et faits pour durer.]
           #e("p", attrs: (class: "intro"))[
             Développement web orienté backend, pipelines de données et intégration
@@ -143,5 +148,6 @@
 #asset("assets/site.css", read("assets/site.css", encoding: none))
 #asset("assets/favicon.svg", read("assets/favicon.svg", encoding: none))
 #asset("assets/icons.svg", read("assets/icons.svg", encoding: none))
+#asset("assets/hero-net.svg", read("assets/hero-net.svg", encoding: none))
 #asset("assets/avatar-sm.jpg", read("assets/avatar-sm.jpg", encoding: none))
 #asset("assets/og.png", read("assets/og.png", encoding: none))
