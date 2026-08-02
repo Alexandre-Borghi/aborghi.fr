@@ -1,60 +1,434 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Alexandre Borghi</title>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Fira+Sans+Condensed&family=Fira+Sans+Extra+Condensed&display=swap"
-            rel="stylesheet"
-        />
+  <title>Alexandre Borghi — Ingénieur logiciel indépendant</title>
+  <meta name="description" content="Ingénieur logiciel indépendant, backend et intégration de systèmes. Des logiciels simples, maintenables et faits pour durer.">
+  <meta name="author" content="Alexandre Borghi">
+  <link rel="canonical" href="https://aborghi.fr/">
 
-        <link rel="stylesheet" href="./css/normalize.css" />
-        <link rel="stylesheet" href="./css/style.css" />
-    </head>
+  <!-- Open Graph — soigne l'aperçu quand un lien est partagé sur LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://aborghi.fr/">
+  <meta property="og:title" content="Alexandre Borghi — Ingénieur logiciel indépendant">
+  <meta property="og:description" content="Backend et intégration de systèmes. Des logiciels simples, maintenables et faits pour durer.">
+  <!-- Ajoute une image d'aperçu quand tu en auras une :
+       <meta property="og:image" content="https://aborghi.fr/og.png"> -->
+  <meta name="twitter:card" content="summary_large_image">
 
-    <body>
-        <header>
-            <img
-                id="logo"
-                src="./img/logo-round.png"
-                alt="Logo d'Alexandre Borghi"
-            />
-            <h1>Alexandre Borghi</h1>
-        </header>
-        <h2>Conseil en informatique - Programmation</h2>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230c0d0f'/><text x='16' y='23' font-family='ui-monospace,monospace' font-weight='600' font-size='17' fill='%23cda15f' text-anchor='middle'>A</text></svg>">
 
-        <p>
-            Vous avez un problème sur votre <strong>ordinateur</strong> ? Un
-            besoin ou une question d'informatique ? Je suis là pour vous guider
-            !
+  <style>
+    :root {
+      --bg:        #0c0d0f;
+      --bg-elev:   #141619;
+      --bg-elev-2: #191c21;
+      --line:      rgba(255, 255, 255, 0.08);
+      --line-2:    rgba(255, 255, 255, 0.14);
+      --text:      #ecebe7;
+      --muted:     #a3a49f;
+      --faint:     #6f716c;
+      --accent:    #cda15f;
+      --accent-2:  #e0bd83;
+      --accent-soft: rgba(205, 161, 95, 0.12);
+
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Helvetica Neue", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+      --measure: 62ch;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent-soft); color: var(--accent-2); }
+
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* ---- Layout ---- */
+    .wrap {
+      width: 100%;
+      max-width: 940px;
+      margin-inline: auto;
+      padding-inline: clamp(1.4rem, 5vw, 3rem);
+    }
+
+    section { padding-block: clamp(4rem, 9vw, 7rem); }
+
+    .divider { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+    /* ---- Typographic details ---- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.9rem;
+      margin: 0 0 2.4rem;
+    }
+    .section-index {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--faint);
+      letter-spacing: 0.05em;
+      padding-top: 0.15rem;
+    }
+    .section-head h2 {
+      font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    p { max-width: var(--measure); }
+
+    /* ---- Hero ---- */
+    .hero {
+      position: relative;
+      padding-block: clamp(6rem, 16vw, 11rem) clamp(4rem, 9vw, 7rem);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -30% 0 auto -10%;
+      height: 620px;
+      background: radial-gradient(58% 60% at 22% 12%, rgba(205, 161, 95, 0.14), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 8vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      font-weight: 640;
+      margin: 1.1rem 0 0;
+    }
+    .lede {
+      font-size: clamp(1.25rem, 3.2vw, 1.6rem);
+      line-height: 1.4;
+      color: var(--text);
+      margin: 1.5rem 0 0;
+      max-width: 24ch;
+      font-weight: 450;
+    }
+    .lede em { color: var(--accent-2); font-style: normal; }
+    .intro { color: var(--muted); margin: 1.6rem 0 0; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 2.6rem;
+    }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.72rem 1.25rem;
+      border-radius: 9px;
+      font-size: 0.95rem;
+      font-weight: 550;
+      border: 1px solid var(--line-2);
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.2s var(--ease), color 0.2s var(--ease);
+    }
+    .btn svg { width: 17px; height: 17px; display: block; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--accent);
+      color: #17130a;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+    .btn-ghost { color: var(--text); background: transparent; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-2); }
+
+    /* ---- Approach cards ---- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 2.4rem;
+    }
+    .card { background: var(--bg-elev); padding: 1.9rem 1.7rem; }
+    .card .k {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .card h3 {
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin: 0.9rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .card p { color: var(--muted); font-size: 0.96rem; margin: 0; max-width: none; }
+
+    .lead { color: var(--muted); font-size: 1.08rem; max-width: 54ch; }
+    .lead strong { color: var(--text); font-weight: 600; }
+
+    /* ---- Case study ---- */
+    .case {
+      display: block;
+      position: relative;
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(1.8rem, 4vw, 2.6rem);
+      transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .case:hover {
+      border-color: var(--line-2);
+      background: var(--bg-elev-2);
+      transform: translateY(-2px);
+    }
+    .case-meta {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--faint);
+    }
+    .case h3 {
+      font-size: clamp(1.4rem, 3.6vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      margin: 0.8rem 0 0;
+      max-width: 22ch;
+    }
+    .case > p { color: var(--muted); margin: 1.2rem 0 0; }
+
+    .metrics {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem 2.4rem;
+      padding: 0;
+      margin: 2rem 0 0;
+      border-top: 1px solid var(--line);
+      padding-top: 1.8rem;
+    }
+    .metrics li { display: flex; flex-direction: column; gap: 0.25rem; }
+    .metrics strong {
+      font-size: 1.55rem;
+      font-weight: 640;
+      letter-spacing: -0.02em;
+      color: var(--accent-2);
+      font-variant-numeric: tabular-nums;
+    }
+    .metrics span { font-size: 0.88rem; color: var(--muted); max-width: 20ch; }
+
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 2rem;
+      font-weight: 550;
+      color: var(--accent-2);
+    }
+    .case-link .arrow { transition: transform 0.25s var(--ease); }
+    .case:hover .case-link .arrow { transform: translateX(4px); }
+
+    /* ---- Contact ---- */
+    .contact p { color: var(--muted); font-size: 1.08rem; margin: 0 0 2rem; }
+
+    /* ---- Footer ---- */
+    footer {
+      border-top: 1px solid var(--line);
+      padding-block: 2.4rem;
+      color: var(--faint);
+      font-size: 0.88rem;
+    }
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer a:hover { color: var(--muted); }
+    .sig { font-family: var(--mono); letter-spacing: 0.03em; }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .actions .btn { flex: 1 1 auto; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Ingénieur logiciel indépendant</p>
+        <h1>Alexandre&nbsp;Borghi</h1>
+        <p class="lede">Je conçois des systèmes backend <em>simples</em>, maintenables et faits pour durer.</p>
+        <p class="intro">
+          Développement web orienté backend, pipelines de données et intégration
+          de systèmes IT. Une attention particulière pour l'industrie et les
+          outils métier — là où un logiciel bien construit change vraiment le
+          quotidien des équipes.
         </p>
-        <p>
-            Vous avez besoin d'un logiciel spécifique ou des besoins de
-            maintenance pour votre entreprise ? N'hésitez pas !
-        </p>
-        <p>
-            Quelque soit votre question/problème/besoin, je serai là pour vous
-            aider et faire de l'informatique un outil plutôt qu'une corvée !
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:contact@aborghi.fr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            Me contacter
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/alexandre-borghi/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8h4.52v14H.24V8zm7.5 0h4.33v1.92h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V22h-4.52v-6.63c0-1.58-.03-3.62-2.2-3.62-2.2 0-2.54 1.72-2.54 3.5V22H7.74V8z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <hr class="divider">
+
+    <!-- ============ APPROCHE ============ -->
+    <section id="approche">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-index">01</span>
+          <h2>Ma façon de travailler</h2>
+        </div>
+        <p class="lead">
+          Un logiciel de qualité n'est pas seulement un logiciel qui marche :
+          c'est un logiciel <strong>qu'on comprend</strong>, simple à faire
+          évoluer et à maintenir longtemps après sa mise en production.
+          C'est l'artisanat que je mets dans chaque projet.
         </p>
 
-        <section>
-            <h2>Contactez-moi !</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="k">01</span>
+            <h3>Comprendre avant de coder</h3>
+            <p>Je pars du problème et des contraintes réelles, pas d'une solution toute faite. Bien cadrer, c'est éviter de construire la mauvaise chose — vite.</p>
+          </div>
+          <div class="card">
+            <span class="k">02</span>
+            <h3>Livrer par incréments</h3>
+            <p>Le premier périmètre réellement utile part en production tôt, puis évolue au rythme des retours. La valeur arrive vite, le risque reste maîtrisé.</p>
+          </div>
+          <div class="card">
+            <span class="k">03</span>
+            <h3>Bâtir pour l'exploitation</h3>
+            <p>Tests, sauvegardes, environnements séparés, déploiements reproductibles. Un système sérieux se maintient sereinement, sans mauvaises surprises.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <ul>
-                <li>
-                    Téléphone: <a href="tel:+33679480774">06 79 48 07 74</a>
-                </li>
-                <li>
-                    Adresse e-mail:
-                    <a href="mailto:contact@aborghi.fr">contact@aborghi.fr</a>
-                </li>
-                <li>Site web: <a href="//www.aborghi.fr">aborghi.fr</a></li>
-            </ul>
-        </section>
-    </body>
+    <hr class="divider">
+
+    <!-- ============ ÉTUDE DE CAS ============ -->
+    <section id="etude-de-cas">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-index">02</span>
+          <h2>Étude de cas</h2>
+        </div>
+
+        <a class="case" href="case-studies/junior-utc-erp.html">
+          <span class="case-meta">Junior UTC · ERP interne · Node, PostgreSQL, Typst</span>
+          <h3>Générer des documents contractuels dans un cadre légal qui change</h3>
+          <p>
+            Les documents contractuels étaient rédigés à la main, au prix de cinq
+            à dix allers-retours qualité par étude. J'ai conçu et développé un ERP
+            interne qui les génère automatiquement — pensé dès le départ pour que
+            les évolutions réglementaires ne redeviennent jamais un chantier.
+          </p>
+
+          <ul class="metrics">
+            <li><strong>÷5</strong><span>relectures qualité par document</span></li>
+            <li><strong>1 semaine</strong><span>pour absorber un changement légal majeur</span></li>
+            <li><strong>18 mois</strong><span>en production, et toujours étendu</span></li>
+          </ul>
+
+          <span class="case-link">Lire l'étude de cas <span class="arrow">→</span></span>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-index">03</span>
+          <h2>Travaillons ensemble</h2>
+        </div>
+        <p>
+          Un projet backend, une intégration de systèmes ou un outil métier à
+          construire&nbsp;? Écrivez-moi — je lis et je réponds à chaque message.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:contact@aborghi.fr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            contact@aborghi.fr
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/alexandre-borghi/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8h4.52v14H.24V8zm7.5 0h4.33v1.92h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V22h-4.52v-6.63c0-1.58-.03-3.62-2.2-3.62-2.2 0-2.54 1.72-2.54 3.5V22H7.74V8z"/></svg>
+            alexandre-borghi
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Alexandre Borghi</span>
+      <span class="sig">Fait avec soin.</span>
+    </div>
+  </footer>
+</body>
 </html>
