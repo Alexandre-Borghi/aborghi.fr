@@ -21,7 +21,7 @@
       description: "Backend et intégration de systèmes. Des logiciels simples, maintenables et faits pour durer.",
       url: "https://aborghi.fr/",
       image: "https://aborghi.fr/assets/og.png",
-      alt: "Alexandre Borghi — ingénieur logiciel indépendant",
+      alt: "Alexandre Borghi — Ingénieur logiciel indépendant",
     ),
   )[
     #e("main")[
@@ -61,7 +61,7 @@
           #e("div", attrs: (class: "cards"))[
             #card("01", [Comprendre avant de coder])[
               Je pars du problème et des contraintes réelles, pas d'une solution
-              toute faite. Bien cadrer, c'est éviter de construire la mauvaise chose — vite.
+              toute faite. Bien cadrer, c'est éviter de construire la mauvaise chose.
             ]
             #card("02", [Livrer par incréments])[
               Le premier périmètre réellement utile part en production tôt, puis
@@ -87,7 +87,7 @@
             #e("p")[
               Les documents contractuels étaient rédigés à la main, au prix de cinq
               à dix allers-retours qualité par étude. J'ai conçu et développé un ERP
-              interne qui les génère automatiquement — pensé dès le départ pour que
+              interne qui les génère automatiquement, pensé dès le départ pour que
               les évolutions réglementaires ne redeviennent jamais un chantier.
             ]
             #e("ul", attrs: (class: "metrics"))[
@@ -132,7 +132,7 @@
       description: "Étude de cas — un ERP interne toujours en production après 18 mois, relectures qualité divisées par cinq, changement réglementaire absorbé en une semaine.",
       url: "https://aborghi.fr/case-studies/junior-utc-erp.html",
       image: "https://aborghi.fr/assets/og.png",
-      alt: "Alexandre Borghi — ingénieur logiciel indépendant",
+      alt: "Alexandre Borghi — Ingénieur logiciel indépendant",
     ),
   )[
     #include "case-studies/junior-utc-erp.typ"

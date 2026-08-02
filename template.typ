@@ -107,14 +107,22 @@
 
 #let standfirst(body) = e("p", attrs: (class: "standfirst"))[#body]
 
-// Closing call-to-action, appended to every case study.
+// Closing call-to-action, appended to every case study. The
+// avatar puts a face to the person you'd be talking to, right
+// where the reader decides to get in touch.
 #let case-cta(base: "") = e("aside", attrs: (class: "cta"))[
-  #e("h2")[Un projet dans le même esprit ?]
-  #e("p")[
-    Backend, intégration de systèmes ou outil métier : si vous voulez un logiciel
-    simple, solide et fait pour durer, parlons-en. Je réponds à chaque message.
+  #e("img", attrs: (
+    class: "cta-avatar", src: base + "assets/avatar-sm.jpg", width: "64", height: "64",
+    alt: "Alexandre Borghi", loading: "lazy", decoding: "async",
+  ))
+  #e("div", attrs: (class: "cta-body"))[
+    #e("h2")[Un projet dans le même esprit ?]
+    #e("p")[
+      Backend, intégration de systèmes ou outil métier : si vous voulez un logiciel
+      simple, solide et fait pour durer, parlons-en. Je réponds à chaque message.
+    ]
+    #contact-actions("Me contacter", "LinkedIn", base: base)
   ]
-  #contact-actions("Me contacter", "LinkedIn", base: base)
 ]
 
 // Full case-study page: shared shell + reading column + backlink
