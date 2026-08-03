@@ -122,7 +122,7 @@
       ]
     ]
 
-    #site-footer
+    #site-footer(base: "")
   ]
 ]
 

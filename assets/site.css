@@ -312,6 +312,9 @@ footer .wrap {
 }
 footer a:hover { color: var(--muted); }
 .sig { font-family: var(--mono); letter-spacing: 0.03em; }
+.footer-end { display: inline-flex; align-items: center; gap: 0.9rem; }
+.footer-src { display: inline-flex; color: var(--faint); transition: color 0.15s ease; }
+.footer-src .icon { width: 16px; height: 16px; }
 
 /* ============================================================
    Case-study article

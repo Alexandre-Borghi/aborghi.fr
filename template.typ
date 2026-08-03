@@ -88,10 +88,18 @@
   #e("span")[#label]
 ]
 
-#let site-footer = e("footer")[
+#let site-footer(base: "") = e("footer")[
   #e("div", attrs: (class: "wrap"))[
     #e("span")[© 2026 Alexandre Borghi]
-    #e("span", attrs: (class: "sig"))[Fait avec soin.]
+    #e("div", attrs: (class: "footer-end"))[
+      #e("span", attrs: (class: "sig"))[Fait avec soin. Et avec #e("a", attrs: (href: "https://typst.app", target: "_blank", rel: "noopener"))[Typst], aussi.]
+      #e("a", attrs: (
+        class: "footer-src",
+        href: "https://github.com/Alexandre-Borghi/aborghi.fr",
+        target: "_blank", rel: "noopener",
+        "aria-label": "Code source sur GitHub",
+      ))[#icon("github", base)]
+    ]
   ]
 ]
 
@@ -148,5 +156,5 @@
       #case-cta(base: "../")
     ]
   ]
-  #site-footer
+  #site-footer(base: "../")
 ]
