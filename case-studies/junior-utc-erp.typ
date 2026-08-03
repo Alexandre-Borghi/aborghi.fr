@@ -76,7 +76,7 @@ surtout ceux qui allaient bientôt finir leur mandat pour avoir leur retour d'ex
 Cette discussion a posé les contraintes fortes pour la réussite du projet :
 
 - Éliminer le temps passé à mettre en page les documents et réduire les allers-retours qualité ;
-- Adapter facilement et rapidement les documents en cas de changements au cadre légal ;
+- Adapter facilement et rapidement les documents en cas de changements du cadre légal ;
 - Faciliter l'utilisation pour un chargé d'affaires qui reprend des études après une courte formation.
 
 = La démarche
@@ -86,12 +86,12 @@ Cette discussion a posé les contraintes fortes pour la réussite du projet :
 Pour obtenir un cahier des charges clair et complet,
 j'ai commencé par une série d'entretiens avec les trois pôles concernés :
 
-- Le pôle Commercial qui voulait accélérer les opérations ;
+- Le pôle Commercial voulait accélérer les opérations ;
 - Le pôle Qualité, garantir la conformité ;
 - Le pôle Trésorerie, obtenir des chiffrages corrects et suivre les délais.
 
 Une fois les process définis,
-les règles métiers validées
+les règles métier validées
 et les attentes comprises,
 j'ai commencé l'implémentation.
 
@@ -138,7 +138,7 @@ peu de librairies existent pour manipuler les fichiers Word.
 Le rendu est rarement parfait,
 écrire un modèle demande de connaître une syntaxe obscure
 et les fonctionnalités avancées (images, tableaux...) requièrent souvent une licence coûteuse,
-hors du budget d'une asso à but non-lucratif.
+hors du budget d'une asso à but non lucratif.
 
 En parallèle,
 j'ai découvert Typst.
@@ -212,7 +212,7 @@ nous a fait perdre des opportunités de paralléliser l'avancement par la suite.
 
 Je l'ai appris avec ce projet,
 et maintenant l'architecture est ma priorité pour tout système
-trop large pour un seul fichier de code.
+trop vaste pour un seul fichier de code.
 J'ai engagé la migration vers une architecture modulaire avant la fin de mon mandat,
 et elle se poursuit aujourd'hui.
 
