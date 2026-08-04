@@ -417,6 +417,18 @@ footer a:hover { color: var(--muted); }
 
 .article hr.divider { margin: 3rem 0 0; }
 
+figure { margin: 1.6rem 0 0; overflow-x: auto; }
+/* Typst's html.frame() bakes an inline width/height style onto the
+   svg itself; !important is required to override it. */
+figure svg { display: block; width: 100% !important; min-width: 300px; height: auto !important; }
+figure figcaption {
+  margin-top: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+  text-align: center;
+}
+
 /* Closing results strip, mirrors the landing-page metrics. */
 .article .metrics { margin-top: 2.4rem; }
 

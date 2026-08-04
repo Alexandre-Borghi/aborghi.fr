@@ -158,3 +158,35 @@
   ]
   #site-footer(base: "../")
 ]
+
+// ---- Illustration infrastructure (Typst diagrams as SVG) -----
+
+// Colours hardcoded to match assets/site.css's custom properties,
+// since a frame's SVG can't see CSS variables.
+#let c-text = rgb("#ecebe7")
+#let c-muted = rgb("#a3a49f")
+#let c-faint = rgb("#6f716c")
+#let c-accent = rgb("#cda15f")
+#let c-accent-2 = rgb("#e0bd83")
+#let c-line-2 = rgb(46, 47, 49)
+#let c-accent-soft = rgb(205, 161, 95, 12%)
+#let c-bg = rgb("#0c0d0f")
+
+#let font-sans = "Roboto"
+#let font-mono = "Liberation Mono"
+
+// Centers `body` in a box of width `w`, used for the text labels
+// scattered across diagrams.
+#let centered(w, body) = box(width: w)[#align(center, body)]
+
+// Wraps a frame in a <figure>, with a required `alt` (the frame's
+// SVG carries no text a screen reader can use) and an optional
+// visible caption below.
+#let figure-frame(alt: "", caption: none, body) = e(
+  "figure", attrs: (role: "img", "aria-label": alt),
+)[
+  #html.frame(body)
+  #if caption != none {
+    e("figcaption")[#caption]
+  }
+]

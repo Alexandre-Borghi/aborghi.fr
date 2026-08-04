@@ -1,6 +1,56 @@
 #import "/template.typ": *
 
 #set text(lang: "fr", region: "FR")
+#show " :": [~:]
+
+// ---- Illustrations ---------------------------------------------
+
+// Roadmap: the four delivery increments, with the first three
+// (shipped ~4 months in) highlighted against the fourth, absorbed
+// over the following year. Illustrates "livraisons incrémentales".
+#let illus-roadmap = figure-frame(
+  alt: "Feuille de route en quatre incréments : authentification, gestion des études et génération des documents d'étude livrés en production après quatre mois ; les documents de trésorerie intégrés sur l'année suivante.",
+  box(width: 600pt, height: 195pt)[
+  #let axis-y = 85pt
+  #let nodes = (75pt, 225pt, 375pt, 525pt)
+
+  // highlight band over production
+  #place(dx: nodes.at(2), dy: 63pt, rect(width: nodes.at(-1) - nodes.at(2) + 100pt, height: 44pt, radius: (left: 8pt, right: 0pt), fill: c-accent-soft))
+  #place(dx: nodes.at(2) - 75pt, dy: 47pt, centered(150pt, text(font: font-mono, size: 13pt, fill: c-muted)[4 mois]))
+  #place(dx: nodes.at(2), dy: 47pt, centered(nodes.at(-1) - nodes.at(2) + 100pt, text(font: font-sans, size: 13pt, fill: c-accent-2)[Production]))
+
+  // axis + nodes
+  #place(dx: nodes.at(0), dy: axis-y, line(start: (0pt, 0pt), end: (nodes.at(3) - nodes.at(0), 0pt), stroke: (paint: c-line-2, thickness: 1.5pt)))
+  #place(dx: nodes.at(-1), dy: axis-y, line(length: 100pt, stroke: (paint: c-line-2, thickness: 1.5pt, dash: "dashed")))
+  #for x in nodes.slice(0, 2) {
+    place(dx: x - 7pt, dy: axis-y - 7pt, circle(radius: 7pt, fill: c-accent))
+  }
+  #place(dx: nodes.at(2) - 25pt, dy: axis-y, line(stroke: (thickness: 14pt, paint: c-accent, cap: "round"), length: 50pt))
+  #place(dx: nodes.at(3) - 7pt, dy: axis-y - 7pt, circle(radius: 7pt, stroke: c-faint, fill: c-bg))
+
+  // step labels
+  #place(dx: nodes.at(0) - 75pt, dy: 120pt, centered(150pt, text(font: font-sans, size: 15pt, fill: c-text)[Authentification]))
+  #place(dx: nodes.at(1) - 75pt, dy: 120pt, centered(150pt, text(font: font-sans, size: 15pt, fill: c-text)[Gestion des études]))
+  #place(dx: nodes.at(2) - 75pt, dy: 120pt, centered(150pt, text(font: font-sans, size: 15pt, fill: c-text)[Génération des documents]))
+  #place(dx: nodes.at(3) - 75pt, dy: 120pt, centered(150pt, text(font: font-sans, size: 15pt, fill: c-text)[Documents de trésorerie]))
+])
+
+// The templates repo standing apart from the app, connected only
+// by a dashed line: modifying one never touches the other. Pairs
+// with the Word-vs-Typst decision and the April 2025 test of it.
+#let illus-decoupled-repos = figure-frame(
+  alt: "Le dépôt des modèles Typst et l'application ERP sont deux dépôts distincts, reliés seulement par une ligne pointillée : modifier l'un ne touche jamais l'autre.",
+  caption: "Les modèles vivent dans un dépôt distinct de l'application",
+  box(width: 500pt, height: 90pt)[
+  #let card(x, title, subtitle) = {
+    place(dx: x, dy: 10pt, rect(width: 150pt, height: 70pt, radius: 10pt, stroke: (paint: c-line-2, thickness: 1.5pt)))
+    place(dx: x, dy: 28pt, centered(150pt, text(font: font-sans, size: 15pt, fill: c-text)[#title]))
+    place(dx: x, dy: 54pt, centered(150pt, text(font: font-mono, size: 12.5pt, fill: c-muted)[#subtitle]))
+  }
+  #card(75pt, [Dépôt modèles], [Typst])
+  #card(275pt, [Application], [Node, PostgreSQL])
+  #place(dx: 225pt, dy: 43pt, line(start: (0pt, 0pt), end: (50pt, 0pt), stroke: (paint: c-faint, thickness: 1.5pt, dash: "dashed")))
+])
 
 #article-header(
   meta: "Junior UTC · ERP interne · Node, PostgreSQL, Typst",
@@ -110,6 +160,8 @@ environ quatre mois après le démarrage.
 Le reste a été intégré au fil de l'année suivante,
 en s'appuyant continuellement sur les retours des utilisateurs.
 
+#illus-roadmap
+
 == Poser les bases d'une exploitation stable
 
 Un outil qui produit des documents contractuels et suit des flux de trésorerie
@@ -192,6 +244,8 @@ J'ai fait les modifications sur une branche Git
 et je les ai testées sur ma machine à partir de cas réels.
 La revue avec la Responsable Qualité n'a porté que sur les différences entre l'ancienne et la nouvelle version,
 ce qui est autrement plus sûr que de relire un document entier à la recherche de ce qui a changé.
+
+#illus-decoupled-repos
 
 La mise en production des nouveaux modèles n'a eu aucun impact sur l'application.
 Modifications, revue et publication : *une semaine* au total,
