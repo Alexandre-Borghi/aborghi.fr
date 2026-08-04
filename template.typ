@@ -151,7 +151,7 @@
 )[
   #e("main")[
     #e("article", attrs: (class: "article"))[
-      #backlink("/")
+      #backlink("../")
       #body
       #case-cta(base: "../")
     ]
